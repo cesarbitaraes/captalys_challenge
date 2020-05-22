@@ -1,0 +1,49 @@
+SOBRE A APLICAÇÃO:
+
+Versão do Python utilizada no desenvolvimento: Python 3.8.2
+O objetivo desse programa é criar uma aplicação GraphQL que se comunica com a API REST oficial do Github.
+
+Como executar:
+Na pasta src:
+uvicorn queries_mutations:app
+
+
+DEPLOY:
+
+Para realizar o deploy da aplicação podemos usar a plataforma em nuvem Heroku (https://www.heroku.com/).
+A heroku é uma plataforma em nuvem que faz deploy de várias aplicações back-end, seja para hospedagem, testes em produção ou escalar as suas aplicações.
+Essa plataforma aceita aplicações escritas em várias linguagens, inclusive Python, que é o nosso caso.
+Também tem integração com o GitHub, deixando o uso mais fácil.
+
+Para usar o Heroku precisamos configurar a nossa API GraphQL quando ele estiver rodando no Heroku.
+Essa configuração geralmente é simples. Exemplo utilizando Flask:
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
+Pipfile:
+O Heroku exige um Pipfile para preparar o ambiente em que a nossa aplicação vai ser executada.
+O Pipfile vai servir para instalar as bibliotecas Python necessárias para rodar a nossa aplicação.
+
+Procfile:
+O Procfile é o arquivo que irá dizer ao Heroku como executar a API.
+
+Como o Heroku funciona com o sistema de versionamento Git, precisaremos criar nosso histórico de versão para a aplicação.
+Então, depois de criar todos esses os arquivos mencionados anteriormente precisamos adicioná-los na árvore Git.
+
+Feito isso, existem algumas formas de enviar o seu código para o Heroku. Você pode connectar com o GitHub ou Dropbox ou ainda usar o
+Heroku Command Line Interface (CLI), que permite fazer toda esse passo via linha de comando.
+Independente da forma que escolher você precisará criar um app no Heroku e vincular com o repositório que contém os arquivos de configuração.
+
+Agora é só enviar o código da aplicação para o servidor e rodar o processo para colocar nossa API online.
+Em um contexto mais simples isso pode ser feito apenas pelo comando "git push heroku master", por exemplo.
+Para acessar a aplicação o endereço será https://<nome_do_projeto_criado_no_heroku>.herokuapp.com/
+
+Referências:
+https://devcenter.heroku.com/categories/python-support
+https://devcenter.heroku.com/articles/github-integration
+http://alissonmachado.com.br/heroku-python-e-gunicorn-deploy-de-aplicacoes-em-containers/
+https://jtemporal.com/deploy-flask-heroku/
+http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html
+https://blog.geekhunter.com.br/heroku/

@@ -1,0 +1,79 @@
+01 - Query que retorna os repositórios de um usuário:
+Query:
+{
+  return_repositories_names(username: "cesarbitaraes"){
+    name
+  }
+}
+
+Retorno:
+{
+  "data": {
+    "return_repositories_names": [
+      {
+        "name": "codenation_java"
+      },
+      {
+        "name": "Renomeando_arquivos"
+      }
+    ]
+  }
+}
+
+02 - Query que retorna os detalhes de um dado repositório:
+Query:
+{
+  return_repository_details(username: "cesarbitaraes", name: "codenation_java"){
+    full_name
+    id
+    html_url
+    description
+    git_url
+  }
+}
+
+Retorno:
+{
+  "data": {
+    "return_repository_details": [
+      {
+        "full_name": "cesarbitaraes/codenation_java",
+        "id": "257674645",
+        "html_url": "https://github.com/cesarbitaraes/codenation_java",
+        "description": "Repositório onde serão adicionados os desafios do curso Codenation Java Online",
+        "git_url": "git://github.com/cesarbitaraes/codenation_java.git"
+      }
+    ]
+  }
+}
+
+03 - Mutation que cria uma nova Oauth Token para um determinado usuário:
+Query:
+mutation{
+  create_token(username: "cesarbitaraes",
+               password: "*********",
+               token_note: "New token created by GraphQL API")
+}
+
+Retorno:
+{
+  "data": {
+    "create_token": "Oauth Token criado com sucesso. Token: 149faaf3b81257a5c2ad1e3ee7e68f*******"
+  }
+}
+
+04 - Mutation que cria um novo repositório para um determinado usuário:
+Query:
+mutation{
+  create_public_repo(username: "cesarbitaraes",
+                     token: "149faaf3b81257a5c2ad1e3ee7e68f*******"
+                     repo_name: "New_Repo_Created"
+                     description: "New repo")
+}
+
+Retorno:
+{
+  "data": {
+    "create_public_repo": "Repositório criado com sucesso. Repo API URL: https://github.com/cesarbitaraes/New_Repo_Created"
+  }
+}
